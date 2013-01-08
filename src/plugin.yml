@@ -1,4 +1,4 @@
-name: plugin_name
+name: PluginName
 main: no.runsafe.creativetoolbox.Plugin
 version: 1.2
 authors: []
