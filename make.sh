@@ -15,14 +15,14 @@ find -type d -exec mkdir "../${plugin}/{}" \;
 cp -a .gitignore .idea META-INF src ../$plugin
 cp PluginName.iml ../$plugin/$plugin.iml
 cd ../$plugin/.idea
-mv artifacts/PluginName.xml "artifacts/${plugin}.xml"
+(cd artifacts; mv PluginName.xml "${plugin}.xml")
 echo $plugin > .name
 for file in `find -type f`; do
 	mv $file "${file}~"
 	sed -e "s/PluginName/${plugin}/" -e "s/plugin_name/${package}/" "${file}~" > $file
 done
 cd ../src
-mv plugin_name $plugin
+(cd no/runsafe; mv plugin_name $plugin)
 for file in `find -type f`; do
 	mv $file "${file}~"
 	sed -e "s/PluginName/${plugin}/" -e "s/plugin_name/${package}/" "${file}~" > $file
