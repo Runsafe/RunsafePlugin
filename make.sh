@@ -13,6 +13,7 @@ if [ -d "../${plugin}" ]; then
 fi
 find -type d -exec mkdir "../${plugin}/{}" \;
 cp -a .gitignore .idea META-INF src ../$plugin
+sed -e "s/PluginName/${plugin}/" -e "s/plugin_name/${package}/" ant.xml > ../$plugin/ant.xml
 cp PluginName.iml ../$plugin/$plugin.iml
 cd ../$plugin/.idea
 (cd artifacts; mv PluginName.xml "${plugin}.xml")
