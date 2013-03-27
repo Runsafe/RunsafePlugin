@@ -23,7 +23,7 @@ for file in `find -type f`; do
 	sed -e "s/PluginName/${plugin}/" -e "s/plugin_name/${package}/" "${file}~" > $file
 done
 cd ../src
-(cd no/runsafe; mv plugin_name $plugin)
+(cd no/runsafe; mv plugin_name $package)
 for file in `find -type f`; do
 	mv $file "${file}~"
 	sed -e "s/PluginName/${plugin}/" -e "s/plugin_name/${package}/" "${file}~" > $file
