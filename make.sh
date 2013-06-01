@@ -5,6 +5,7 @@ if [ -z "$1" -o -z "$2" ]; then
 	exit 1
 fi
 
+login=$(cat github-user)
 plugin=$1
 package=$2
 if [ -d "../${plugin}" ]; then
@@ -33,3 +34,5 @@ find -name *~ | xargs rm
 git init
 git add -A
 git commit -m "Initialized new plugin $plugin from template"
+curl -i -u "$login" -d '{ "name": "'$plugin'", "auto_init": false }' https://api.github.com/orgs/runsafe/repos
+ssh jenkins@10.0.30.4 -c "./create.sh $plugin"
