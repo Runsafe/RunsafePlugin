@@ -6,6 +6,12 @@ if [ -z "$1" -o -z "$2" ]; then
 fi
 
 login=$(cat github-user)
+
+if [ -z $login ]; then
+	echo "Please put username:password in a file github-user"
+	exit 1
+fi
+
 plugin=$1
 package=$2
 if [ -d "../${plugin}" ]; then
@@ -34,5 +40,7 @@ find -name *~ | xargs rm
 git init
 git add -A
 git commit -m "Initialized new plugin $plugin from template"
+git remote add origin "git@github.com:Runsafe/${plugin}.git"
+git push -u origin master
 curl -i -u "$login" -d '{ "name": "'$plugin'", "auto_init": false }' https://api.github.com/orgs/runsafe/repos
-ssh jenkins@10.0.30.4 -c "./create.sh $plugin"
+ssh jenkins@10.0.30.3 "./create.sh $plugin"
