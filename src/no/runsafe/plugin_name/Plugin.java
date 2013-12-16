@@ -8,7 +8,7 @@ public class Plugin extends RunsafePlugin
 //	public static IDebug Debugger = null;
 
 	@Override
-	protected void PluginSetup()
+	protected void pluginSetup()
 	{
 //		Debugger = getComponent(IDebug.class);
 
