@@ -1,5 +1,5 @@
 name: PluginName
-main: no.runsafe.plugin_name.Plugin
+main: no.runsafe.plugin_name.PluginName
 version: 1.0.@BUILD@
 authors: []
 depend: []
