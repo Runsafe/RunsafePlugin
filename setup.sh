@@ -15,7 +15,7 @@ fi
 plugin=$1
 package=$2
 cd ../$plugin
+curl -i -u "$login" -d '{ "name": "'$plugin'", "auto_init": false }' https://api.github.com/orgs/runsafe/repos
 git remote add origin "git@github.com:Runsafe/${plugin}.git"
 git push -u origin master
-curl -i -u "$login" -d '{ "name": "'$plugin'", "auto_init": false }' https://api.github.com/orgs/runsafe/repos
 ssh jenkins@10.0.30.3 "./create.sh $plugin"
