@@ -11,6 +11,7 @@ if [ -d "../${plugin}" ]; then
 	echo "The ${plugin} folder already exists!";
 	exit 1
 fi
+mkdir "../${plugin}"
 find -type d -exec mkdir "../${plugin}/{}" \;
 cp -a .gitignore .idea META-INF src ../$plugin
 sed -e "s/PluginName/${plugin}/" -e "s/plugin_name/${package}/" ant.xml > ../$plugin/ant.xml
